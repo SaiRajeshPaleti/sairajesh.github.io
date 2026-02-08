@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            background: linear-gradient(135deg, #ff9a9e, #fecfef); 
+        }
+        .container { 
+            text-align: center; 
+            font-size: 2em; 
+            font-weight: bold; 
+        }
+        button { 
+            padding: 15px 30px; 
+            margin: 10px; 
+            font-size: 1.2em; 
+            border: none; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+        }
+        #no { 
+            background: #ff6b6b; 
+            color: white; 
+        }
+        #yes { 
+            background: #4ecdc4; 
+            color: white; 
+        }
+        .message {
+            font-size: 2.5em;
+            color: #e91e63;
+            margin-top: 20px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s;
+        }
+        .message.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div>Do you love me?</div>
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No</button>
+        <div id="loveMessage" class="message" style="display: none;">I love you too! ❤️</div>
+    </div>
+
+    <script>
+        // Wait for page to fully load
+        document.addEventListener('DOMContentLoaded', function() {
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const loveMessage = document.getElementById('loveMessage');
+            const container = document.getElementById('container');
+
+            // Hide No button on click
+            noBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.add('hidden');
+            });
+
+            // Show love message on Yes click
+            yesBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Hide question and buttons, show message
+                container.innerHTML = '<div class="message show">I love you too! ❤️</div>';
+            });
+        });
+    </script>
+</body>
+</html>
